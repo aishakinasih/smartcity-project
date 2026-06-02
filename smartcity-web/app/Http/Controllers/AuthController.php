@@ -44,11 +44,15 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Jika yang login adalah admin (kamu bisa set email khusus admin di sini)
-            if ($request->email == 'admin@smartcity.go.id') {
+            // Ambil data user yang baru saja berhasil login
+            $user = Auth::user();
+
+            // JIKA YANG LOGIN ADALAH SUPERADMIN ATAU ADMIN INSTANSI
+            if ($user->role === 'superadmin' || $user->role === 'admin_instansi') {
                 return redirect()->route('laporan.dashboard');
             }
 
+            // JIKA USER BIASA, KE HALAMAN FORM PENGADUAN
             return redirect()->route('laporan.index');
         }
 

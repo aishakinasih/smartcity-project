@@ -14,21 +14,45 @@
             <p class="text-slate-500 mt-2">Layanan pengaduan masyarakat berbasis NLP IndoBERT untuk prioritas penanganan penanggulangan kota.</p>
         </div>
 
-        <div class="flex justify-center items-center space-x-4 mb-8 bg-slate-100 py-2 px-4 rounded-full w-fit mx-auto text-xs shadow-xs border border-slate-200">
-            <span class="text-slate-600">Masuk sebagai: <strong class="text-slate-900">{{ auth()->user()->name }}</strong></span>
-            <span class="text-slate-300">|</span>
-            <form action="{{ route('logout') }}" method="POST" class="inline">
-                @csrf
-                <button type="submit" class="text-rose-600 hover:text-rose-700 underline font-semibold cursor-pointer">
+        <div class="text-sm text-slate-600 bg-white border border-slate-200 px-6 py-3 rounded-xl flex items-center justify-between shadow-xs mb-6">
+            <div>
+                <span class="text-slate-400">Masuk sebagai:</span> 
+                <strong class="text-slate-700 font-semibold">{{ auth()->user()->name }}</strong>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="{{ route('laporan.riwayat') }}" class="text-blue-600 hover:text-blue-700 font-bold flex items-center space-x-1 transition-colors">
+                    <span> Lihat Riwayat Laporan</span>
+                </a>
+                
+                <span class="text-slate-200">|</span>
+                
+                <a href="{{ route('logout') }}" class="text-rose-600 hover:text-rose-700 font-medium transition-colors" 
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Keluar (Logout)
-                </button>
+                </a>
+            </div>
+            
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                @csrf
             </form>
         </div>
 
         @if(session('success'))
-            <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-r-lg shadow-sm">
-                <p class="text-emerald-700 font-medium">{{ session('success') }}</p>
-                <a href="{{ route('laporan.dashboard') }}" class="text-xs text-emerald-600 underline mt-1 inline-block">Buka Dashboard Antrean Admin &rarr;</a>
+            <div class="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-xl text-emerald-400 text-sm mb-6">
+                <p class="font-semibold">{{ session('success') }}</p>
+                
+                @auth
+                    @if(auth()->user()->role === 'superadmin' || auth()->user()->role === 'admin_instansi')
+                        <a href="{{ route('laporan.dashboard') }}" class="text-xs underline hover:text-emerald-300 block mt-1">
+                            Buka Dashboard Antrean Admin &rarr;
+                        </a>
+                    @else
+                        <a href="{{ route('laporan.riwayat') }}" class="text-xs underline hover:text-emerald-300 block mt-1">
+                            Lihat Status Perkembangan Laporan Saya &rarr;
+                        </a>
+                    @endif
+                @endauth
             </div>
         @endif
 
