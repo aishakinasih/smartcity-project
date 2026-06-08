@@ -6,7 +6,7 @@ import os
 
 driver = webdriver.Chrome()
 
-url = "https://www.lapor.go.id/instansi/pemerintah-kabupaten-sumedang/done"
+url = "https://www.lapor.go.id/instansi/pemerintah-kota-bandung/done"
 
 driver.get(url)
 
@@ -38,9 +38,9 @@ print("Jumlah link ditemukan:", len(laporan_links))
 
 existing_links = set()
 
-if os.path.exists("laporan_smdg_done.csv"):
+if os.path.exists("dataset/laporan_bdg_done.csv"):
 
-    old_df = pd.read_csv("laporan_smdg_done.csv")
+    old_df = pd.read_csv("dataset/laporan_bdg_done.csv")
 
     if "link" in old_df.columns:
         existing_links = set(old_df["link"].tolist())
@@ -61,7 +61,7 @@ for laporan in laporan_links:
         continue
 
     # batasi ambil data baru
-    if count >= 150:
+    if count >= 80:
         break
 
     print("Membuka:", laporan)
@@ -100,7 +100,7 @@ for laporan in laporan_links:
 new_df = pd.DataFrame(data)
 
 # kalau file lama ada gabungkan
-if os.path.exists("laporan_smdg_done.csv"):
+if os.path.exists("dataset/laporan_bdg_done.csv"):
 
     final_df = pd.concat([old_df, new_df])
 
@@ -110,7 +110,7 @@ if os.path.exists("laporan_smdg_done.csv"):
 else:
     final_df = new_df
 
-final_df.to_csv("laporan_smdg_done.csv", index=False)
+final_df.to_csv("dataset/laporan_bdg_done.csv", index=False)
 
 print("CSV berhasil dibuat!")
 
