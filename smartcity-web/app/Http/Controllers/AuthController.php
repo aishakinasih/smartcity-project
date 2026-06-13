@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Menampilkan halaman Login & Register (Satu halaman split)
+    // Menampilkan halaman Login murni
     public function showAuthForm()
     {
         return view('auth.login');
+    }
+
+    // Penyesuaian: Menampilkan halaman Register murni
+    public function showRegisterForm()
+    {
+        return view('auth.register');
     }
 
     // Memproses Registrasi Akun Baru
@@ -30,7 +36,8 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->back()->with('success_reg', 'Registrasi berhasil! Silakan login.');
+        // Penyesuaian: Lempar ke rute 'login' agar user bisa langsung masuk menggunakan akun barunya
+        return redirect()->route('login')->with('success_reg', 'Registrasi berhasil! Silakan login.');
     }
 
     // Memproses Login User
@@ -56,6 +63,7 @@ class AuthController extends Controller
             return redirect()->route('laporan.index');
         }
 
+        // Penyesuaian: redirect balik ke halaman login jika gagal beserta error-nya
         return redirect()->back()->withErrors([
             'login_error' => 'Email atau password yang kamu masukkan salah.',
         ]);
