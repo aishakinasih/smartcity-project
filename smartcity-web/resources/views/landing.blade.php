@@ -12,7 +12,7 @@
     <header class="max-w-7xl w-full mx-auto px-8 py-6 flex justify-between items-center">
         <span class="text-xl font-black text-blue-400 tracking-wider">SmartReport AI</span>
         <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold transition-all shadow-lg shadow-blue-900/40">
-            Masuk ke Sistem 
+            Masuk
         </a>
     </header>
 

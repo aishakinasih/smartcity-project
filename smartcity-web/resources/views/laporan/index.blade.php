@@ -65,19 +65,19 @@
                     <select name="instansi" required class="w-full px-4 py-3 bg-[#090e1a] border border-slate-800 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-slate-200 cursor-pointer transition-all">
                         <option value="" disabled selected class="text-slate-500">Pilih Instansi Tujuan</option>
                         <option value="DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN" class="bg-[#030712]">1. DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN (damkar)</option>
-                        <option value="DINAS SOSIAL" class="bg-[#030712]">6. DINAS SOSIAL</option>
-                        <option value="DINAS PERHUBUNGAN" class="bg-[#030712]">7. DINAS PERHUBUNGAN</option>
-                        <option value="SEKRETARIAT DAERAH" class="bg-[#030712]">8. SEKRETARIAT DAERAH</option>
-                        <option value="SEKRETARIAT DPRD" class="bg-[#030712]">9. SEKRETARIAT DPRD</option>
-                        <option value="DINAS PENDIDIKAN" class="bg-[#030712]">10. DINAS PENDIDIKAN</option>
-                        <option value="SATUAN POLISI PAMONG PRAJA" class="bg-[#030712]">11. SATUAN POLISI PAMONG PRAJA (satpol pp)</option>
-                        <option value="DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL" class="bg-[#030712]">12. DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL (disdukcapil)</option>
-                        <option value="DINAS KESEHATAN" class="bg-[#030712]">13. DINAS KESEHATAN</option>
-                        <option value="BADAN PENANGGULANGAN BENCANA DAERAH" class="bg-[#030712]">14. BADAN PENANGGULANGAN BENCANA DAERAH (BPBD)</option>
-                        <option value="DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN" class="bg-[#030712]">15. DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN</option>
-                        <option value="DINAS TENAGA KERJA DAN TRANSMIGRASI" class="bg-[#030712]">16. DINAS TENAGA KERJA DAN TRANSMIGRASI</option>
-                        <option value="DINAS LINGKUNGAN HIDUP DAN KEHUTANAN" class="bg-[#030712]">17. DINAS LINGKUNGAN HIDUP DAN KEHUTANAN</option>
-                        <option value="RUMAH SAKIT UMUM DAERAH UMAR WIRAHADIKUSUMAH" class="bg-[#030712]">18. RUMAH SAKIT UMUM DAERAH UMAR WIRAHADIKUSUMAH</option>
+                        <option value="DINAS SOSIAL" class="bg-[#030712]">2. DINAS SOSIAL</option>
+                        <option value="DINAS PERHUBUNGAN" class="bg-[#030712]">3. DINAS PERHUBUNGAN</option>
+                        <option value="SEKRETARIAT DAERAH" class="bg-[#030712]">4. SEKRETARIAT DAERAH</option>
+                        <option value="SEKRETARIAT DPRD" class="bg-[#030712]">5. SEKRETARIAT DPRD</option>
+                        <option value="DINAS PENDIDIKAN" class="bg-[#030712]">6. DINAS PENDIDIKAN</option>
+                        <option value="SATUAN POLISI PAMONG PRAJA" class="bg-[#030712]">7. SATUAN POLISI PAMONG PRAJA (satpol pp)</option>
+                        <option value="DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL" class="bg-[#030712]">8. DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL (disdukcapil)</option>
+                        <option value="DINAS KESEHATAN" class="bg-[#030712]">9. DINAS KESEHATAN</option>
+                        <option value="BADAN PENANGGULANGAN BENCANA DAERAH" class="bg-[#030712]">10. BADAN PENANGGULANGAN BENCANA DAERAH (BPBD)</option>
+                        <option value="DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN" class="bg-[#030712]">11. DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN</option>
+                        <option value="DINAS TENAGA KERJA DAN TRANSMIGRASI" class="bg-[#030712]">12. DINAS TENAGA KERJA DAN TRANSMIGRASI</option>
+                        <option value="DINAS LINGKUNGAN HIDUP DAN KEHUTANAN" class="bg-[#030712]">13. DINAS LINGKUNGAN HIDUP DAN KEHUTANAN</option>
+                        <option value="RUMAH SAKIT UMUM DAERAH UMAR WIRAHADIKUSUMAH" class="bg-[#030712]">14. RUMAH SAKIT UMUM DAERAH UMAR WIRAHADIKUSUMAH</option>
                     </select>
                 </div>
 
@@ -106,7 +106,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-4 rounded-xl transition-all shadow-md shadow-blue-900/20 text-sm cursor-pointer mt-2">
-                    Kirim Pengaduan & Analisis Urgensi &rarr;
+                    Kirim Pengaduan &rarr;
                 </button>
             </form>
         </div>
