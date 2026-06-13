@@ -27,15 +27,19 @@
                 
                 <span class="text-slate-200">|</span>
                 
-                <a href="{{ route('logout') }}" class="text-rose-600 hover:text-rose-700 font-medium transition-colors" 
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Keluar (Logout)
-                </a>
+                <div class="flex items-center gap-3">
+                    <a href="{{ route('profile.show') }}" class="text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-lg transition-all font-medium">
+                        Profil Saya
+                    </a>
+
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="text-xs bg-red-500/10 hover:bg-red-600 border border-red-500/20 hover:border-red-600 text-red-400 hover:text-white px-3 py-1.5 rounded-lg transition-all font-medium">
+                            Keluar
+                        </button>
+                    </form>
+                </div>
             </div>
-            
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                @csrf
-            </form>
         </div>
 
         @if(session('success'))

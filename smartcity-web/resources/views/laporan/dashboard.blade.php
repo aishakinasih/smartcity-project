@@ -31,7 +31,20 @@
                 </a>
             </nav>
         </div>
-        <div class="text-xs text-slate-600 border-t border-slate-800 pt-4 font-medium">IndoBERT Classifier Engine v1.0</div>
+        
+        <div>
+            <a href="{{ route('profile.show') }}" class="block text-xs text-slate-300 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-slate-800 transition-all mb-1">
+                ⚙️ Pengaturan Profil
+            </a>
+
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full text-left text-xs text-red-400 hover:text-red-300 font-medium py-2 px-4 rounded-lg hover:bg-red-500/5 transition-all cursor-pointer">
+                    Sistem Keluar
+                </button>
+            </form>
+            <div class="text-xs text-slate-600 border-t border-slate-800 pt-4 font-medium mt-4">IndoBERT Classifier Engine v1.0</div>
+        </div>
     </div>
 
     <div class="flex-1 flex flex-col overflow-y-auto">

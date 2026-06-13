@@ -17,10 +17,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // 3. Rute yang WAJIB LOGIN baru bisa dibuka (Middleware Auth)
 Route::middleware('auth')->group(function () {
+    
     // Halaman Form Pengaduan Masyarakat
     Route::get('/lapor', [LaporanController::class, 'index'])->name('laporan.index');
     Route::post('/laporan/kirim', [LaporanController::class, 'store'])->name('laporan.store');
-    Route::get('/riwayat-saya', [LaporanController::class, 'riwayatUser'])->name('laporan.riwayat')->middleware('auth');
+    Route::get('/riwayat-saya', [LaporanController::class, 'riwayatUser'])->name('laporan.riwayat');
+    
+    // RUTE PROFIL PENGGUNA
+    Route::get('/profil', [AuthController::class, 'showProfile'])->name('profile.show');
+    Route::put('/profil/update', [AuthController::class, 'updateProfile'])->name('profile.update');
+    Route::delete('/profil/delete', [AuthController::class, 'deleteAccount'])->name('profile.delete');
     
     // Halaman Dashboard Admin
     // 1. Halaman Utama: Antrean Laporan AI (Menampilkan Tabel Saja)
@@ -31,5 +37,4 @@ Route::middleware('auth')->group(function () {
 
     // 3. Route Aksi: Update Status Laporan (Dipanggil saat select option berubah)
     Route::patch('/laporan/{id}/update-status', [LaporanController::class, 'updateStatus'])->name('laporan.updateStatus');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

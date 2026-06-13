@@ -25,6 +25,11 @@
                      <span class="whitespace-nowrap">Buat Laporan Baru</span>
                 </a>
                 
+                <!-- TOMBOL PROFIL SAYA BARU -->
+                <a href="{{ route('profile.show') }}" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium rounded-xl transition-colors cursor-pointer">
+                    Profil Saya
+                </a>
+                
                 <a href="{{ route('logout') }}" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-rose-400 text-sm font-medium rounded-xl transition-colors cursor-pointer"
                    onclick="event.preventDefault(); document.getElementById('riwayat-logout-form').submit();">
                     Keluar

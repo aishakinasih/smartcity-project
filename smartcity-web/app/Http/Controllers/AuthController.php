@@ -69,4 +69,59 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('landing');
     }
+
+    public function showProfile()
+    {
+        // Mengambil data user yang sedang login
+        $user = Auth::user(); 
+        return view('laporan.profile', compact('user'));
+    }
+
+    // 2. Memproses Update Profil / Password
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'current_password' => 'required|string',
+            'password' => 'nullable|string|min:6|confirmed', // 'confirmed' memastikan cocok dengan password_confirmation
+        ]);
+
+        // Cek apakah password saat ini benar
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'Kata sandi sekarang yang Anda masukkan salah.']);
+        }
+
+        // Update nama
+        $user->name = $request->name;
+
+        // Jika user mengisi password baru, update password-nya
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success_profile', 'Profil dan kata sandi berhasil diperbarui!');
+    }
+
+    // 3. Memproses Hapus Akun
+    public function deleteAccount(Request $request)
+    {
+        $user = Auth::user();
+
+        // Logout user terlebih dahulu
+        Auth::logout();
+
+        // Hapus data user dari database
+        $user->delete();
+
+        // Invalidasi session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('landing')->with('success_delete', 'Akun Anda telah berhasil dihapus secara permanen.');
+    }
 }
