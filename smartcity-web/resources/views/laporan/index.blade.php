@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartReport - Pengaduan Masyarakat</title>
+    <title>Reporta - Pengaduan Masyarakat</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -29,7 +29,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">SmartReport AI</h1>
+                    <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">Reporta </h1>
                     <p class="text-slate-500 text-xs">Masuk sebagai: <span class="text-[#0F4C81] font-bold">{{ auth()->user()->name }}</span></p>
                 </div>
             </div>

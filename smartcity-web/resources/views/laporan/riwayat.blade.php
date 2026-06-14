@@ -5,108 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartReport - Riwayat Pengaduan</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #0F4C81, #1565C0, #00B8D9); }
+        .glass { backdrop-filter: blur(16px); }
+    </style>
 </head>
-<body class="bg-[#090e1a] text-slate-100 font-sans antialiased min-h-screen">
+<body class="min-h-screen py-10 px-4 relative">
+    <!-- Background Gedung + Overlay Biru (Sama persis dengan halaman laporan) -->
+    <div class="fixed inset-0 -z-30">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-[#0F4C81]/85 backdrop-blur-[2px]"></div>
+    </div>
 
-    <div class="max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+    <div class="max-w-4xl mx-auto space-y-6">
         
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 bg-[#030712] py-3 px-5 rounded-2xl border border-slate-800/70 shadow-xl">
-            <div>
-                <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                    Riwayat Pengaduan Saya
-                </h1>
-                <p class="text-slate-400 text-[11px] mt-0.5">
-                    Selamat datang kembali, <span class="text-slate-200 font-semibold">{{ auth()->user()->name }}</span>
-                </p>
+        <!-- Top Header Navigation (Gaya Glassmorphism Putih) -->
+        <div class="bg-white/95 glass border border-white/20 p-6 rounded-[2rem] shadow-2xl flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 hero-gradient rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">Riwayat Pengaduan Saya</h1>
+                    <p class="text-slate-500 text-xs">Selamat datang kembali, <span class="text-[#0F4C81] font-bold">{{ auth()->user()->name }}</span></p>
+                </div>
             </div>
             
             <div class="flex items-center gap-2">
-                <a href="{{ route('laporan.index') }}" class="h-9 px-4 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10">
-                    <span class="whitespace-nowrap">Buat Laporan Baru</span>
-                </a>
-                
-                <a href="{{ route('profile.show') }}" class="h-9 px-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10">
-                    Profil Saya
-                </a>
-                
-                <a href="{{ route('logout') }}" class="h-9 px-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10"
-                   onclick="event.preventDefault(); document.getElementById('riwayat-logout-form').submit();">
-                    Keluar
-                </a>
-                <form id="riwayat-logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                <a href="{{ route('laporan.index') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Buat Laporan Baru</a>
+                <a href="{{ route('profile.show') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Profil Saya</a>
+                <form id="riwayat-logout-form" action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
+                    <button type="submit" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap cursor-pointer">Keluar</button>
                 </form>
             </div>
         </div>
 
-        <div class="bg-[#030712] rounded-2xl border border-slate-800/80 shadow-2xl overflow-x-auto JSON_layer">
-            <table class="w-full text-left border-collapse min-w-[800px]">
-                <thead>
-                    <tr class="bg-[#090e1a]/60 text-slate-400 text-xs font-bold uppercase border-b border-slate-800 tracking-wider">
-                        <th class="px-6 py-4.5 w-[35%]">Laporan Anda</th>
-                        <th class="px-6 py-4.5 w-[30%]">Tujuan Instansi</th>
-                        <th class="px-6 py-4.5 w-[15%]">Lokasi</th>
-                        <th class="px-6 py-4.5 text-center w-[20%]">Status Kelanjutan</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-800/50 text-sm">
-                    @forelse($laporans as $laporan)
-                    <tr class="hover:bg-slate-900/20 transition-colors group">
-                        
-                        <td class="px-6 py-5">
-                            <div class="font-bold text-slate-200 group-hover:text-blue-400 transition-colors mb-1.5 text-base">
-                                {{ $laporan->judul ?: '-' }}
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed max-w-sm break-words">
-                                {{ $laporan->isi_laporan ?: '-' }}
-                            </p>
-                            <span class="text-[10px] text-slate-500 font-medium block mt-3">
-                                 {{ $laporan->created_at ? $laporan->created_at->format('d M Y, H:i') : 'Tanggal tidak tersedia' }} WIB
-                            </span>
-                        </td>
-                        
-                        <td class="px-6 py-5 vertical-align-middle">
-                            <span class="inline-block px-3 py-1.5 bg-[#090e1a] border border-slate-800 rounded-lg text-slate-300 font-semibold text-xs tracking-wide uppercase max-w-xs break-words whitespace-normal shadow-sm">
-                                 {{ $laporan->instansi }}
-                            </span>
-                        </td>
-                        
-                        <td class="px-6 py-5 text-slate-300 font-medium text-xs">
-                            <div class="flex items-center gap-1 capitalize">
-                                 {{ $laporan->lokasi ?: '-' }}
-                            </div>
-                        </td>
-                        
-                        <td class="px-6 py-5 text-center">
-                            @if($laporan->status == 'Masuk')
-                                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-900 border border-slate-700/80 text-slate-300 text-xs font-bold rounded-full shadow-xs">
-                                     Laporan Masuk
+        <!-- Container Tabel (Gaya Card Form Laporan Putih Bulat) -->
+        <div class="bg-white/95 glass border border-white/20 p-8 md:p-10 rounded-[2.5rem] shadow-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[750px]">
+                    <thead>
+                        <tr class="bg-slate-50 text-[#0F4C81] text-xs font-extrabold uppercase border-b border-slate-100 tracking-[0.1em]">
+                            <th class="px-6 py-4 rounded-tl-2xl w-[35%]">Laporan Anda</th>
+                            <th class="px-6 py-4 w-[30%]">Tujuan Instansi</th>
+                            <th class="px-6 py-4 w-[15%]">Lokasi</th>
+                            <th class="px-6 py-4 text-center rounded-tr-2xl w-[20%]">Status Kelanjutan</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm text-slate-800 font-medium">
+                        @forelse($laporans as $laporan)
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            
+                            <!-- Detail Keluhan -->
+                            <td class="px-6 py-5">
+                                <div class="font-bold text-slate-800 group-hover:text-[#1565C0] transition-colors mb-1 text-base">
+                                    {{ $laporan->judul ?: '-' }}
+                                </div>
+                                <p class="text-slate-500 text-xs leading-relaxed max-w-sm break-words font-normal">
+                                    {{ $laporan->isi_laporan ?: '-' }}
+                                </p>
+                                <span class="text-[10px] text-slate-400 font-bold block mt-3 tracking-wide">
+                                    {{ $laporan->created_at ? $laporan->created_at->format('d M Y, H:i') : 'Tanggal tidak tersedia' }} WIB
                                 </span>
-                            @elseif($laporan->status == 'Diproses')
-                                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold rounded-full shadow-xs">
-                                     Sedang Diproses
+                            </td>
+                            
+                            <!-- Nama Instansi -->
+                            <td class="px-6 py-5 vertical-align-middle">
+                                <span class="inline-block px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 font-bold text-xs tracking-wide uppercase max-w-xs break-words whitespace-normal shadow-xs">
+                                    {{ $laporan->instansi }}
                                 </span>
-                            @else
-                                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold rounded-full shadow-xs">
-                                     Selesai Ditangani
-                                </span>
-                            @endif
-                        </td>
-                        
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="4" class="px-6 py-16 text-center text-slate-500 font-medium">
-                            <div class="text-3xl mb-2">📭</div>
-                            Anda belum pernah mengirimkan laporan pengaduan.
-                        </td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                            </td>
+                            
+                            <!-- Lokasi Kejadian -->
+                            <td class="px-6 py-5 text-slate-600 text-xs font-semibold capitalize">
+                                {{ $laporan->lokasi ?: '-' }}
+                            </td>
+                            
+                            <!-- Status Dinamis -->
+                            <td class="px-6 py-5 text-center">
+                                @if($laporan->status == 'Masuk')
+                                    <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-extrabold rounded-full shadow-xs">
+                                        Laporan Masuk
+                                    </span>
+                                @elseif($laporan->status == 'Diproses')
+                                    <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-rose-50 border border-rose-100 text-rose-600 text-xs font-extrabold rounded-full shadow-xs">
+                                        Sedang Diproses
+                                    </span>
+                                @else
+                                    <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-extrabold rounded-full shadow-xs">
+                                        Selesai Ditangani
+                                    </span>
+                                @endif
+                            </td>
+                            
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4" class="px-6 py-16 text-center text-slate-400 italic font-medium">
+                                Anda belum pernah mengirimkan laporan pengaduan.
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
-        
     </div>
-
 </body>
 </html>

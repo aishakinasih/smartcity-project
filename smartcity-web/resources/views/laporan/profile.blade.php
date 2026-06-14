@@ -3,136 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartReport AI - Profil Saya</title>
+    <title>Reporta - Profil Saya</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #0F4C81, #1565C0, #00B8D9); }
+        .glass { backdrop-filter: blur(16px); }
+    </style>
 </head>
-<body class="bg-[#090e1a] text-slate-100 font-sans antialiased min-h-screen">
+<body class="min-h-screen py-10 px-4 relative">
+    <!-- Background Wrapper Gedung + Overlay Biru -->
+    <div class="fixed inset-0 -z-30">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-[#0F4C81]/85 backdrop-blur-[2px]"></div>
+    </div>
 
-    <div class="max-w-3xl mx-auto p-4 md:p-6 space-y-6">
+    <div class="max-w-3xl mx-auto space-y-6">
         
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 bg-[#030712] py-3 px-5 rounded-2xl border border-slate-800/70 shadow-xl">
-            <div>
-                <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                    SmartReport AI
-                </h1>
-                <p class="text-slate-400 text-[11px] mt-0.5">
-                    Menu: <span class="text-slate-200 font-semibold">Pengaturan Profil</span>
-                </p>
+        <!-- Top Header Navigation (Glassmorphism White/95) -->
+        <div class="bg-white/95 glass border border-white/20 p-6 rounded-[2rem] shadow-2xl flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 hero-gradient rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">Reporta</h1>
+                    <p class="text-slate-500 text-xs">Menu: <span class="text-[#0F4C81] font-bold">Pengaturan Profil</span></p>
+                </div>
             </div>
             
             <div class="flex items-center gap-2">
                 @if(auth()->user()->role === 'superadmin' || auth()->user()->role === 'admin_instansi')
-                    <a href="{{ route('laporan.dashboard') }}" class="h-9 px-4 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10">
-                        <span class="whitespace-nowrap"> Dashboard Admin</span>
-                    </a>
+                    <a href="{{ route('laporan.dashboard') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Dashboard Admin</a>
                 @else
-                    <a href="{{ route('laporan.index') }}" class="h-9 px-4 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10">
-                        <span class="whitespace-nowrap"> Form Pengaduan</span>
-                    </a>
+                    <a href="{{ route('laporan.index') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Form Pengaduan</a>
                 @endif
             </div>
         </div>
 
-        <div class="space-y-0.5">
-            <h2 class="text-xl font-bold text-slate-100 tracking-tight">Pengaturan Akun</h2>
-            <p class="text-xs text-slate-400">Kelola informasi data diri dan keamanan kredensial akun akses sistem Anda.</p>
+        <!-- Judul Halaman -->
+        <div class="space-y-1 pl-4">
+            <h2 class="text-2xl font-extrabold text-white drop-shadow-md">Pengaturan Akun</h2>
+            <p class="text-slate-200 text-xs font-medium">Kelola informasi data diri dan keamanan kredensial akun akses sistem Anda.</p>
         </div>
 
+        <!-- Status Sessions (Success / Errors) -->
         @if(session('success_profile'))
-            <div class="bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-xl text-emerald-400 text-xs">
-                {{ session('success_profile') }}
+            <div class="bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 p-5 rounded-2xl shadow-xl">
+                <p class="font-bold text-emerald-600 text-sm">{{ session('success_profile') }}</p>
             </div>
         @endif
 
         @if($errors->any())
-            <div class="bg-rose-500/10 border border-rose-500/20 text-rose-400 p-4 rounded-xl text-xs space-y-1">
+            <div class="bg-rose-500/10 backdrop-blur-md border border-rose-500/20 text-rose-600 p-5 rounded-2xl shadow-xl text-xs space-y-1 font-bold">
                 @foreach($errors->all() as $error)
                     <p>• {{ $error }}</p>
                 @endforeach
             </div>
         @endif
 
+        <!-- Main Content Area -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             
-            <div class="md:col-span-5 bg-[#030712] border border-slate-800/60 rounded-2xl p-5 shadow-xl space-y-4">
-                <div class="border-b border-slate-800/60 pb-3">
-                    <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-0.5">Identitas</span>
-                    <h3 class="text-sm font-bold text-slate-100">Informasi Dasar</h3>
+            <!-- Kiri: Informasi Identitas (Glassmorphism White/95) -->
+            <div class="md:col-span-5 bg-white/95 glass border border-white/20 rounded-[2rem] shadow-2xl p-6 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-[0.15em] block mb-1">Identitas</span>
+                    <h3 class="text-sm font-extrabold text-slate-800">Informasi Dasar</h3>
                 </div>
-
+                
                 <div class="space-y-3">
-                    <div class="bg-[#090e1a] border border-slate-800/60 p-3.5 rounded-xl">
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Alamat Email</span>
-                        <span class="text-xs font-semibold text-slate-300 mt-1 block font-mono break-all">{{ $user->email }}</span>
-                        <span class="text-[9px] text-slate-500 mt-1 block">*Email tidak dapat diubah.</span>
+                    <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-wider block mb-1">Alamat Email</span>
+                        <span class="text-sm font-bold text-slate-800 font-mono break-all block">{{ $user->email }}</span>
+                        <span class="text-[10px] text-slate-400 mt-1 block font-normal">*Email tidak dapat diubah.</span>
                     </div>
-
-                    <div class="bg-[#090e1a] border border-slate-800/60 p-3.5 rounded-xl flex justify-between items-center">
+                    
+                    <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex justify-between items-center">
                         <div>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Hak Akses</span>
-                            <span class="text-xs font-semibold text-slate-300 mt-0.5 block">
+                            <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-wider block mb-1">Hak Akses</span>
+                            <span class="text-sm font-bold text-slate-800 block">
                                 {{ $user->role === 'superadmin' ? 'Super Admin' : ($user->role === 'admin_instansi' ? 'Admin Instansi' : 'Masyarakat Publik') }}
                             </span>
                         </div>
-                        <span class="px-1.5 py-0.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[9px] font-bold font-mono uppercase rounded-md">
+                        <span class="px-2.5 py-1 bg-blue-100 text-[#0F4C81] text-[10px] font-black tracking-wide uppercase rounded-lg">
                             Verified
                         </span>
                     </div>
                 </div>
             </div>
 
-            <div class="md:col-span-7 bg-[#030712] border border-slate-800/60 rounded-2xl p-5 md:p-6 shadow-xl">
-                <div class="border-b border-slate-800/60 pb-3 mb-4">
-                    <span class="text-[10px] font-bold text-red-500 uppercase tracking-widest block mb-0.5">Kredensial</span>
-                    <h3 class="text-sm font-bold text-slate-100">Perbarui Profil & Kata Sandi</h3>
+            <!-- Kanan: Form Perubahan Data (Glassmorphism White/95) -->
+            <div class="md:col-span-7 bg-white/95 glass border border-white/20 rounded-[2rem] shadow-2xl p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-3 mb-6">
+                    <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-[0.15em] block mb-1">Kredensial</span>
+                    <h3 class="text-sm font-extrabold text-slate-800">Perbarui Profil & Kata Sandi</h3>
                 </div>
-
-                <form action="{{ route('profile.update') }}" method="POST" class="space-y-4">
+                
+                <form action="{{ route('profile.update') }}" method="POST" class="space-y-5">
                     @csrf
                     @method('PUT')
-
-                    <div class="space-y-1.5">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Nama Lengkap</label>
-                        <input type="text" name="name" value="{{ old('name', $user->name) }}" required 
-                               class="w-full bg-[#090e1a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-hidden focus:border-blue-500 transition-all">
+                    
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Nama Lengkap</label>
+                        <input type="text" name="name" value="{{ old('name', $user->name) }}" required
+                               class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all">
                     </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Kata Sandi Sekarang <span class="text-rose-500">*</span></label>
+                    
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Kata Sandi Sekarang <span class="text-rose-500">*</span></label>
                         <input type="password" name="current_password" required placeholder="Masukkan kata sandi saat ini"
-                               class="w-full bg-[#090e1a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-hidden focus:border-blue-500 transition-all font-mono">
+                               class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all font-mono">
                     </div>
-
-                    <div class="border-t border-slate-800/40 my-3 pt-3">
-                        <p class="text-[10px] text-slate-400">*Kosongkan kolom di bawah jika tidak ingin mengubah kata sandi.</p>
+                    
+                    <div class="border-t border-slate-100 my-2 pt-3">
+                        <p class="text-[11px] text-slate-400 font-normal">*Kosongkan kolom di bawah jika tidak ingin mengubah kata sandi Anda.</p>
                     </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Kata Sandi Baru (Opsional)</label>
-                        <input type="password" name="password" 
-                               class="w-full bg-[#090e1a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-hidden focus:border-blue-500 transition-all font-mono">
+                    
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Kata Sandi Baru (Opsional)</label>
+                        <input type="password" name="password" placeholder="Minimal 6 karakter"
+                               class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all font-mono">
                     </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Konfirmasi Kata Sandi Baru</label>
-                        <input type="password" name="password_confirmation" 
-                               class="w-full bg-[#090e1a] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-hidden focus:border-blue-500 transition-all font-mono">
+                    
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Konfirmasi Kata Sandi Baru</label>
+                        <input type="password" name="password_confirmation" placeholder="Ulangi kata sandi baru"
+                               class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all font-mono">
                     </div>
-
-                    <div class="pt-2 flex justify-end">
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-all text-xs tracking-wide shadow-md shadow-blue-900/20 cursor-pointer">
+                    
+                    <div class="pt-2">
+                        <button type="submit" class="w-full hero-gradient text-white font-bold py-4 rounded-2xl hover:scale-[1.01] transition-all duration-300 text-sm shadow-xl shadow-blue-500/20 cursor-pointer">
                             Simpan Perubahan
                         </button>
                     </div>
                 </form>
             </div>
-
+            
         </div>
 
-        <footer class="text-center text-[10px] text-slate-600 py-4 border-t border-slate-800/40 font-medium">
+        <!-- Footer -->
+        <footer class="text-center text-[11px] text-slate-300 py-4 border-t border-white/10 font-medium tracking-wide">
             &copy; 2026 SmartCity Informatics Platform. All Rights Reserved.
         </footer>
     </div>
-
 </body>
 </html>
