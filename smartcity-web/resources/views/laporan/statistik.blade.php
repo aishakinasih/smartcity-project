@@ -81,8 +81,8 @@
                                 <span>Masuk: <b class="text-slate-200">{{ $totalMasuk }}</b></span>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-                                <span>Diproses: <b class="text-amber-400">{{ $totalDiproses }}</b></span>
+                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                <span>Diproses: <b class="text-red-400">{{ $totalDiproses }}</b></span>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
@@ -154,9 +154,9 @@
                     
                     <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800/80 shadow-md">
                         <p class="text-xs font-semibold text-slate-500 uppercase">Sedang Diproses</p>
-                        <p class="text-3xl font-black text-amber-400 mt-2">{{ $totalDiproses }}</p>
+                        <p class="text-3xl font-black text-red-400 mt-2">{{ $totalDiproses }}</p>
                         <div class="w-full bg-slate-900 h-1.5 rounded-full mt-4 overflow-hidden">
-                            <div class="bg-amber-500 h-full rounded-full" style="width: {{ $totalSemua ? ($totalDiproses / $totalSemua) * 100 : 0 }}%"></div>
+                            <div class="bg-red-500 h-full rounded-full" style="width: {{ $totalSemua ? ($totalDiproses / $totalSemua) * 100 : 0 }}%"></div>
                         </div>
                     </div>
                     
@@ -186,7 +186,7 @@
                         data: [{{ $totalMasuk }}, {{ $totalDiproses }}, {{ $totalSelesai }}],
                         backgroundColor: [
                             '#64748b', // Slate Gray untuk Masuk
-                            '#f59e0b', // Amber Yellow untuk Diproses
+                            '#ef4444, // red Yellow untuk Diproses
                             '#10b981'  // Emerald Green untuk Selesai
                         ],
                         borderWidth: 3,

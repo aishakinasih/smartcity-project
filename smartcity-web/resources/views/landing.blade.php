@@ -3,133 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartReport AI - Selamat Datang</title>
+
+    <title>Reporta - Public Reporting System</title>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body class="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-slate-100 min-h-screen flex flex-col justify-between">
 
-    <header class="max-w-7xl w-full mx-auto px-8 py-6 flex justify-between items-center">
-        <span class="text-xl font-black text-blue-400 tracking-wider">SmartReport AI</span>
-        <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold transition-all shadow-lg shadow-blue-900/40">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family:'Plus Jakarta Sans',sans-serif;
+        }
+
+        .glass{
+            backdrop-filter: blur(16px);
+        }
+
+        .hero-gradient{
+            background: linear-gradient(135deg,#0F4C81,#1565C0,#00B8D9);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden text-slate-800">
+
+<div class="fixed inset-0 -z-30">
+
+    <img
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop"
+        class="w-full h-full object-cover">
+
+    <div class="absolute inset-0 bg-[#0F4C81]/80"></div>
+
+</div>
+
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-12 h-12 rounded-2xl hero-gradient flex items-center justify-center shadow-lg">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-6 h-6 text-white"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
+
+                </svg>
+
+            </div>
+
+            <div>
+                <h1 class="font-bold text-xl">Reporta</h1>
+                <p class="text-xs text-slate-500">Public Reporting System</p>
+            </div>
+
+        </div>
+
+        <a href="{{ route('login') }}"
+           class="px-5 py-2.5 rounded-xl text-white bg-[#0F4C81] hover:bg-[#0b3d66] transition font-semibold shadow-lg">
             Masuk
         </a>
-    </header>
 
-    <main class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full my-auto">
-        
-        <div class="space-y-6 text-center lg:text-left">
-            <div>
-                <span class="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-semibold rounded-full border border-blue-500/20 uppercase tracking-widest">
-                    Informatics Smart City Project
-                </span>
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 leading-tight">
-                Prioritas Laporan Masyarakat <br><span class="text-blue-400">Berbasis AI IndoBERT</span>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-16">
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div>
+
+            <span class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-xs font-bold tracking-widest">
+                SMART CITY • DIGITAL GOVERNMENT
+            </span>
+
+            <h1 class="mt-6 text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
+                Kelola Laporan
+                <span class="text-[#0a2540]">Masyarakat</span>
+                dengan Lebih Cepat
             </h1>
-            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Sistem pengaduan cerdas yang mengurutkan penanganan keluhan publik secara otomatis menggunakan pemrosesan bahasa alami (NLP) demi efisiensi respon infrastruktur kota.
+
+            <p class="mt-6 text-slate-100 text-lg font-semibold leading-relaxed drop-shadow-xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+            Reporta membantu pemerintah dan instansi dalam menerima, 
+            mengelola, mengklasifikasikan, dan memprioritaskan laporan 
+            masyarakat secara cepat, transparan, dan terukur.
             </p>
-            <div class="pt-4">
-                <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold transition-all shadow-lg shadow-blue-900/40">
-                    Mulai Laporkan Keluhan
+
+            <div class="mt-8 flex flex-wrap gap-4">
+
+                <a href="{{ route('login') }}"
+                   class="px-7 py-3 rounded-2xl bg-[#0F4C81] text-white font-semibold shadow-xl hover:scale-105 transition">
+                    Mulai Pelaporan
                 </a>
+
             </div>
+              
+
         </div>
 
-        <div class="bg-slate-800/40 border border-slate-700/50 rounded-3xl p-6 md:p-8 backdrop-blur-sm shadow-xl flex flex-col md:flex-row items-center gap-8 max-w-xl mx-auto lg:w-full">
-            
-            <div class="relative w-48 h-48 flex-shrink-0">
-                <canvas id="landingChart"></canvas>
+        <div class="space-y-6">
+
+            <div class="bg-white/90 glass rounded-3xl p-8 shadow-xl">
+
+                <div class="grid md:grid-cols-[220px_1fr] gap-8 items-center">
+
+                    <div class="relative h-[220px]">
+                        <canvas id="landingChart"></canvas>
+                    </div>
+
+                    <div>
+
+                        <h3 class="text-2xl font-bold">
+                            Status Penanganan
+                        </h3>
+
+                        <p class="text-slate-500 mb-6">
+                            Total laporan masuk:
+                            {{ $totalSemua }} laporan
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-slate-700">🔴 Belum Diproses</span>
+                                <span class="font-bold text-[#f43f5e]">{{ $totalSemua > 0 ? round(($totalMasuk / $totalSemua) * 100) : 0 }}%</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-slate-700">🔵 Sedang Diproses</span>
+                                <span class="font-bold text-[#38bdf8]">{{ $totalSemua > 0 ? round(($totalDiproses / $totalSemua) * 100) : 0 }}%</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-slate-700">🟢 Selesai Ditangani</span>
+                                <span class="font-bold text-[#34d399]">{{ $totalSemua > 0 ? round(($totalSelesai / $totalSemua) * 100) : 0 }}%</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="w-full space-y-4">
-                <div>
-                    <h3 class="text-lg font-bold text-white">Status Penanganan</h3>
-                    <p class="text-xs text-slate-400">Total laporan masuk: {{ $totalSemua }} keluhan</p>
-                </div>
-                
-                <div class="space-y-2.5">
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                            <span class="text-slate-300">Belum Diproses</span>
-                        </div>
-                        <span class="font-semibold text-amber-400">
-                            {{ $totalSemua > 0 ? round(($totalMasuk / $totalSemua) * 100) : 0 }}%
-                        </span>
-                    </div>
-
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-                            <span class="text-slate-300">Sedang Diproses</span>
-                        </div>
-                        <span class="font-semibold text-blue-400">
-                            {{ $totalSemua > 0 ? round(($totalDiproses / $totalSemua) * 100) : 0 }}%
-                        </span>
-                    </div>
-
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                            <span class="text-slate-300">Selesai Ditangani</span>
-                        </div>
-                        <span class="font-semibold text-emerald-400">
-                            {{ $totalSemua > 0 ? round(($totalSelesai / $totalSemua) * 100) : 0 }}%
-                        </span>
-                    </div>
-                </div>
-            </div>
         </div>
 
-    </main>
+    </div>
 
-    <footer class="text-center text-xs text-slate-600 py-6 border-t border-slate-800/60 w-full">
-        &copy; 2026 SmartCity Informatics Platform. All Rights Reserved.
-    </footer>
+</main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const ctx = document.getElementById('landingChart').getContext('2d');
-            
-            // Mengambil nilai data dari PHP (jika kosong, diisi nilai default 1 agar grafik tidak kosong/error)
-            const dataMasuk = {{ $totalMasuk }};
-            const dataDiproses = {{ $totalDiproses }};
-            const dataSelesai = {{ $totalSelesai }};
-            const totalData = {{ $totalSemua }};
+<footer class="mt-12 border-t border-slate-200 bg-white text-center py-6 text-slate-500">
+    © 2026 Reporta — Platform Pengelolaan Laporan Masyarakat
+</footer>
 
-            // Jika belum ada data sama sekali di DB, buat grafik contoh (placeholder) berwujud transparan
-            const chartData = totalData > 0 ? [dataMasuk, dataDiproses, dataSelesai] : [1, 1, 1];
-            const chartColors = totalData > 0 ? ['#f59e0b', '#3b82f6', '#10b981'] : ['#475569', '#334155', '#1e293b'];
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const ctx = document.getElementById('landingChart').getContext('2d');
+    const dataMasuk = {{ $totalMasuk }};
+    const dataDiproses = {{ $totalDiproses }};
+    const dataSelesai = {{ $totalSelesai }};
+    const totalData = {{ $totalSemua }};
 
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Belum Diproses', 'Sedang Diproses', 'Selesai'],
-                    datasets: [{
-                        data: chartData,
-                        backgroundColor: chartColors,
-                        borderWidth: 0,
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false // dimatikan karena sudah kita buat kustom di sisi kanan HTML
-                        },
-                        tooltip: {
-                            enabled: totalData > 0 // aktif jika ada data riil saja
-                        }
-                    },
-                    cutout: '75%' // Membuat lingkaran dalam chart menjadi lebih tipis dan elegan
-                }
-            });
-        });
-    </script>
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Belum Diproses', 'Diproses', 'Selesai'],
+            datasets: [{
+                data: totalData > 0 ? [dataMasuk, dataDiproses, dataSelesai] : [1, 1, 1],
+                // Menggunakan Merah yang lebih "muted"/elegan, Biru, dan Hijau yang serasi
+                // Gunakan palet ini agar lebih "nyambung" dengan background biru kamu
+                backgroundColor: ['#f43f5e', '#38bdf8', '#34d399'],
+                borderWidth: 0,
+                hoverOffset: 4
+            }]
+        },
+        options:{
+            plugins:{
+                legend:{display:false}
+            },
+            cutout:'75%', // Dibuat sedikit lebih ramping agar lebih elegan
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    });
+});
+</script>
 
 </body>
 </html>

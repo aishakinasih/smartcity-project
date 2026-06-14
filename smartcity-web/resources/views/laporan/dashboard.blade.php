@@ -126,7 +126,7 @@
                                 @if($laporan->urgensi == 'Tinggi')
                                     <span class="px-3 py-1 bg-rose-500/10 text-rose-400 text-xs font-black rounded-full border border-rose-500/20 shadow-xs">Tinggi</span>
                                 @elseif($laporan->urgensi == 'Sedang')
-                                    <span class="px-3 py-1 bg-amber-500/10 text-amber-400 text-xs font-black rounded-full border border-amber-500/20 shadow-xs">Sedang</span>
+                                    <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs font-black rounded-full border border-red-500/20 shadow-xs">Sedang</span>
                                 @else
                                     <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-black rounded-full border border-emerald-500/20 shadow-xs">Rendah</span>
                                 @endif
@@ -143,11 +143,11 @@
                                     <select name="status" onchange="this.form.submit()" 
                                         class="w-full bg-slate-900 border text-xs font-bold rounded-lg px-2.5 py-2 cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors
                                         {{ $laporan->status == 'Masuk' ? 'border-slate-800 text-slate-300 bg-slate-900' : '' }}
-                                        {{ $laporan->status == 'Diproses' ? 'border-amber-500/30 text-amber-400 bg-amber-500/5' : '' }}
+                                        {{ $laporan->status == 'Diproses' ? 'border-red-500/30 text-red-400 bg-red-500/5' : '' }}
                                         {{ $laporan->status == 'Selesai' ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/5' : '' }}">
                                         
                                         <option value="Masuk" class="bg-slate-950 text-slate-300" {{ $laporan->status == 'Masuk' ? 'selected' : '' }}>Masuk</option>
-                                        <option value="Diproses" class="bg-slate-950 text-amber-400" {{ $laporan->status == 'Diproses' ? 'selected' : '' }}>Diproses</option>
+                                        <option value="Diproses" class="bg-slate-950 text-red-400" {{ $laporan->status == 'Diproses' ? 'selected' : '' }}>Diproses</option>
                                         <option value="Selesai" class="bg-slate-950 text-emerald-400" {{ $laporan->status == 'Selesai' ? 'selected' : '' }}>Selesai</option>
                                     </select>
                                 </form>

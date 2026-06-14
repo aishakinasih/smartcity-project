@@ -83,7 +83,7 @@
                                      Laporan Masuk
                                 </span>
                             @elseif($laporan->status == 'Diproses')
-                                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-full shadow-xs">
+                                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold rounded-full shadow-xs">
                                      Sedang Diproses
                                 </span>
                             @else

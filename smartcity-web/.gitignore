@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+ai-api/indobert_priority_best/
+*.safetensors
+public/uploads/laporan/*

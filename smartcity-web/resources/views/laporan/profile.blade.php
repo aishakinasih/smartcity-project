@@ -23,7 +23,7 @@
             <div class="flex items-center gap-2">
                 @if(auth()->user()->role === 'superadmin' || auth()->user()->role === 'admin_instansi')
                     <a href="{{ route('laporan.dashboard') }}" class="h-9 px-4 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10">
-                        <span class="whitespace-nowrap">&larr; Dashboard Admin</span>
+                        <span class="whitespace-nowrap"> Dashboard Admin</span>
                     </a>
                 @else
                     <a href="{{ route('laporan.index') }}" class="h-9 px-4 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition-all flex items-center justify-center cursor-pointer shadow-md shadow-blue-900/10">
@@ -83,7 +83,7 @@
 
             <div class="md:col-span-7 bg-[#030712] border border-slate-800/60 rounded-2xl p-5 md:p-6 shadow-xl">
                 <div class="border-b border-slate-800/60 pb-3 mb-4">
-                    <span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest block mb-0.5">Kredensial</span>
+                    <span class="text-[10px] font-bold text-red-500 uppercase tracking-widest block mb-0.5">Kredensial</span>
                     <h3 class="text-sm font-bold text-slate-100">Perbarui Profil & Kata Sandi</h3>
                 </div>
 
