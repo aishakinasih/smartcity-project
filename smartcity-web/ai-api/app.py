@@ -1,14 +1,20 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+import os
+
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 app = FastAPI()
 
-MODEL_PATH = "./indobert_priority_best"
+# Ganti dari folder lokal ke Hugging Face
+MODEL_PATH = "aishakinasih/indobert-priority-smartcity"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
 
 model.eval()
