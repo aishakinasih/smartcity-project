@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun - Reporta Public Reporting System</title>
+    <title>Create an Account - Reporta Public Reporting System</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -32,40 +32,40 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
                 </svg>
             </div>
-            <h2 class="text-2xl font-extrabold text-slate-800">Daftar Akun</h2>
-            <p class="text-sm text-slate-500">Bergabunglah untuk mulai mengajukan laporan.</p>
+            <h2 class="text-2xl font-extrabold text-slate-800"> Create an Account</h2>
+            <p class="text-sm text-slate-500">Join now to start submitting reports.</p>
         </div>
 
         <form action="{{ route('register.post') }}" method="POST" class="space-y-5">
             @csrf
             <div>
-                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Nama Lengkap</label>
-                <input type="text" name="name" required placeholder="Nama Lengkap Anda" 
+                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Full Name</label>
+                <input type="text" name="name" required placeholder="Your Full Name" 
                        class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#0F4C81] focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 transition-all duration-300">
             </div>
             <div>
-                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Alamat Email</label>
-                <input type="email" name="email" required placeholder="nama@email.com" 
+                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Email address</label>
+                <input type="email" name="email" required placeholder="name@email.com" 
                        class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#0F4C81] focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 transition-all duration-300">
             </div>
             <div>
-                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Password Baru</label>
-                <input type="password" name="password" required placeholder="Minimal 6 karakter" 
+                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">New Password</label>
+                <input type="password" name="password" required placeholder="Minimum 6 Characters" 
                        class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#0F4C81] focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 transition-all duration-300">
             </div>
             
             <button type="submit" class="w-full hero-gradient hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/30 text-white font-bold py-4 rounded-2xl transition-all duration-300 text-sm cursor-pointer mt-2">
-                Daftar Akun Baru
+                Create an Account
             </button>
         </form>
 
         <div class="space-y-4 pt-4 text-center border-t border-slate-100">
             <p class="text-sm text-slate-500">
-                Sudah punya akun? 
-                <a href="{{ route('login') }}" class="text-[#0F4C81] font-bold hover:underline">Masuk di sini</a>
+                Already have an account? 
+                <a href="{{ route('login') }}" class="text-[#0F4C81] font-bold hover:underline">Login Now</a>
             </p>
             <a href="{{ route('landing') }}" class="inline-flex items-center text-xs text-slate-400 hover:text-slate-600 transition-colors gap-1">
-                &larr; Kembali ke Beranda
+                &larr; Back to Homepage
             </a>
         </div>
     </div>

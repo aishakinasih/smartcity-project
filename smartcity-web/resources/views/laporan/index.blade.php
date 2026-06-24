@@ -58,15 +58,15 @@
 @endif
 
         <div class="bg-white/95 glass border border-white/20 p-8 md:p-10 rounded-[2.5rem] shadow-2xl">
-            <h2 class="text-xl font-extrabold text-slate-800 mb-8">Buat Pengaduan Baru</h2>
+            <h2 class="text-xl font-extrabold text-slate-800 mb-8">Create New Report</h2>
             
             <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                 @csrf
                 
                 <div>
-                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Tujuan Instansi</label>
+                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Destination Agency</label>
                     <select name="instansi" required class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium">
-                        <option value="" disabled selected>Pilih Instansi Tujuan</option>
+                        <option value="" disabled selected>Select the Destination Agency</option>
                         <option value="DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN">1. DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN</option>
                         <option value="DINAS SOSIAL">2. DINAS SOSIAL</option>
                         <option value="DINAS PERHUBUNGAN">3. DINAS PERHUBUNGAN</option>
@@ -84,8 +84,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Judul Laporan</label>
-                    <input type="text" name="judul" required placeholder="Contoh: Jalan Rusak Parah" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium">
+                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Report title</label>
+                    <input type="text" name="judul" required placeholder="Example: Jalan Rusak Parah" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium">
                 </div>
 
                 <div>

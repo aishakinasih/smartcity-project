@@ -71,7 +71,7 @@
 
         <a href="{{ route('login') }}"
            class="px-5 py-2.5 rounded-xl text-white bg-[#0F4C81] hover:bg-[#0b3d66] transition font-semibold shadow-lg">
-            Masuk
+            Login
         </a>
 
     </div>
@@ -88,22 +88,20 @@
             </span>
 
             <h1 class="mt-6 text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
-                Kelola Laporan
-                <span class="text-[#0a2540]">Masyarakat</span>
-                dengan Lebih Cepat
+                Manage
+                <span class="text-[#0a2540]">Public Report</span>
+                Faster
             </h1>
 
             <p class="mt-6 text-slate-100 text-lg font-semibold leading-relaxed drop-shadow-xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
-            Reporta membantu pemerintah dan instansi dalam menerima, 
-            mengelola, mengklasifikasikan, dan memprioritaskan laporan 
-            masyarakat secara cepat, transparan, dan terukur.
+            Reporta helps government agencies and institutions receive, manage, classify, and prioritize public reports quickly, transparently, and systematically.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-4">
 
                 <a href="{{ route('login') }}"
                    class="px-7 py-3 rounded-2xl bg-[#0F4C81] text-white font-semibold shadow-xl hover:scale-105 transition">
-                    Mulai Pelaporan
+                    Start Reporting
                 </a>
 
             </div>
@@ -124,27 +122,27 @@
                     <div>
 
                         <h3 class="text-2xl font-bold">
-                            Status Penanganan
+                            Report Status
                         </h3>
 
                         <p class="text-slate-500 mb-6">
-                            Total laporan masuk:
-                            {{ $totalSemua }} laporan
+                            Total Submitted Reports:
+                            {{ $totalSemua }} Reports
                         </p>
 
                         <div class="space-y-4">
                             <div class="flex justify-between items-center">
-                                <span class="font-semibold text-slate-700">🔴 Belum Diproses</span>
+                                <span class="font-semibold text-slate-700">🔴 Not Yet Processed</span>
                                 <span class="font-bold text-[#f43f5e]">{{ $totalSemua > 0 ? round(($totalMasuk / $totalSemua) * 100) : 0 }}%</span>
                             </div>
 
                             <div class="flex justify-between items-center">
-                                <span class="font-semibold text-slate-700">🔵 Sedang Diproses</span>
+                                <span class="font-semibold text-slate-700">🔵 In Progress</span>
                                 <span class="font-bold text-[#38bdf8]">{{ $totalSemua > 0 ? round(($totalDiproses / $totalSemua) * 100) : 0 }}%</span>
                             </div>
 
                             <div class="flex justify-between items-center">
-                                <span class="font-semibold text-slate-700">🟢 Selesai Ditangani</span>
+                                <span class="font-semibold text-slate-700">🟢 Resolved</span>
                                 <span class="font-bold text-[#34d399]">{{ $totalSemua > 0 ? round(($totalSelesai / $totalSemua) * 100) : 0 }}%</span>
                             </div>
                         </div>
@@ -162,7 +160,7 @@
 </main>
 
 <footer class="mt-12 border-t border-slate-200 bg-white text-center py-6 text-slate-500">
-    © 2026 Reporta — Platform Pengelolaan Laporan Masyarakat
+    © 2026 Reporta — Public Complaint Management Platform
 </footer>
 
 <script>

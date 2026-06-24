@@ -32,8 +32,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/>
                 </svg>
             </div>
-            <h2 class="text-2xl font-extrabold text-slate-800">Selamat Datang</h2>
-            <p class="text-sm text-slate-500">Gunakan kredensial Anda untuk masuk ke sistem.</p>
+            <h2 class="text-2xl font-extrabold text-slate-800">Welcome</h2>
+            <p class="text-sm text-slate-500">Use your credentials to sign in to the system.</p>
         </div>
 
         @if(session('success_reg'))
@@ -51,8 +51,8 @@
         <form action="{{ route('login.post') }}" method="POST" class="space-y-5">
             @csrf
             <div>
-                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Alamat Email</label>
-                <input type="email" name="email" required placeholder="nama@email.com" 
+                <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Email Address</label>
+                <input type="email" name="email" required placeholder="name@email.com" 
                        class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#0F4C81] focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 transition-all duration-300">
             </div>
             <div>
@@ -62,17 +62,17 @@
             </div>
             
             <button type="submit" class="w-full hero-gradient hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/30 text-white font-bold py-4 rounded-2xl transition-all duration-300 text-sm cursor-pointer mt-2">
-                Masuk Sekarang 
+                Log In Now
             </button>
         </form>
 
         <div class="space-y-4 pt-4 text-center border-t border-slate-100">
             <p class="text-sm text-slate-500">
-                Belum punya akun? 
-                <a href="{{ route('register') }}" class="text-[#0F4C81] font-bold hover:underline">Daftar di sini</a>
+                Don't have an account?
+                <a href="{{ route('register') }}" class="text-[#0F4C81] font-bold hover:underline"> Register here</a>
             </p>
             <a href="{{ route('landing') }}" class="inline-flex items-center text-xs text-slate-400 hover:text-slate-600 transition-colors gap-1">
-                &larr; Kembali ke Beranda
+                &larr; Back to Homepage
             </a>
         </div>
     </div>
