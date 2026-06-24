@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">Reporta</h1>
-                    <p class="text-slate-500 text-xs">Menu: <span class="text-[#0F4C81] font-bold">Pengaturan Profil</span></p>
+                    <p class="text-slate-500 text-xs">Menu: <span class="text-[#0F4C81] font-bold">Profile Settings</span></p>
                 </div>
             </div>
             
@@ -39,15 +39,15 @@
                 @if(auth()->user()->role === 'superadmin' || auth()->user()->role === 'admin_instansi')
                     <a href="{{ route('laporan.dashboard') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Dashboard Admin</a>
                 @else
-                    <a href="{{ route('laporan.index') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Form Pengaduan</a>
+                    <a href="{{ route('laporan.index') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Report Form</a>
                 @endif
             </div>
         </div>
 
         <!-- Judul Halaman -->
         <div class="space-y-1 pl-4">
-            <h2 class="text-2xl font-extrabold text-white drop-shadow-md">Pengaturan Akun</h2>
-            <p class="text-slate-200 text-xs font-medium">Kelola informasi data diri dan keamanan kredensial akun akses sistem Anda.</p>
+            <h2 class="text-2xl font-extrabold text-white drop-shadow-md">Account Settings</h2>
+            <p class="text-slate-200 text-xs font-medium">Manage your personal information and the security of your system access credentials.</p>
         </div>
 
         <!-- Status Sessions (Success / Errors) -->
@@ -71,22 +71,22 @@
             <!-- Kiri: Informasi Identitas (Glassmorphism White/95) -->
             <div class="md:col-span-5 bg-white/95 glass border border-white/20 rounded-[2rem] shadow-2xl p-6 space-y-4">
                 <div class="border-b border-slate-100 pb-3">
-                    <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-[0.15em] block mb-1">Identitas</span>
-                    <h3 class="text-sm font-extrabold text-slate-800">Informasi Dasar</h3>
+                    <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-[0.15em] block mb-1">Identity</span>
+                    <h3 class="text-sm font-extrabold text-slate-800">Basic Informations</h3>
                 </div>
                 
                 <div class="space-y-3">
                     <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
-                        <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-wider block mb-1">Alamat Email</span>
+                        <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-wider block mb-1">Email Address</span>
                         <span class="text-sm font-bold text-slate-800 font-mono break-all block">{{ $user->email }}</span>
-                        <span class="text-[10px] text-slate-400 mt-1 block font-normal">*Email tidak dapat diubah.</span>
+                        <span class="text-[10px] text-slate-400 mt-1 block font-normal">*Your email address cannot be changed.</span>
                     </div>
                     
                     <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex justify-between items-center">
                         <div>
-                            <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-wider block mb-1">Hak Akses</span>
+                            <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-wider block mb-1">Access Rights</span>
                             <span class="text-sm font-bold text-slate-800 block">
-                                {{ $user->role === 'superadmin' ? 'Super Admin' : ($user->role === 'admin_instansi' ? 'Admin Instansi' : 'Masyarakat Publik') }}
+                                {{ $user->role === 'superadmin' ? 'Super Admin' : ($user->role === 'admin_instansi' ? 'Admin Instansi' : 'Citizen') }}
                             </span>
                         </div>
                         <span class="px-2.5 py-1 bg-blue-100 text-[#0F4C81] text-[10px] font-black tracking-wide uppercase rounded-lg">
@@ -99,8 +99,8 @@
             <!-- Kanan: Form Perubahan Data (Glassmorphism White/95) -->
             <div class="md:col-span-7 bg-white/95 glass border border-white/20 rounded-[2rem] shadow-2xl p-6 md:p-8">
                 <div class="border-b border-slate-100 pb-3 mb-6">
-                    <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-[0.15em] block mb-1">Kredensial</span>
-                    <h3 class="text-sm font-extrabold text-slate-800">Perbarui Profil & Kata Sandi</h3>
+                    <span class="text-[10px] font-extrabold text-[#0F4C81] uppercase tracking-[0.15em] block mb-1">Credentials</span>
+                    <h3 class="text-sm font-extrabold text-slate-800">Update Profile & Password</h3>
                 </div>
                 
                 <form action="{{ route('profile.update') }}" method="POST" class="space-y-5">
@@ -108,36 +108,36 @@
                     @method('PUT')
                     
                     <div>
-                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Nama Lengkap</label>
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Full Name</label>
                         <input type="text" name="name" value="{{ old('name', $user->name) }}" required
                                class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all">
                     </div>
                     
                     <div>
-                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Kata Sandi Sekarang <span class="text-rose-500">*</span></label>
-                        <input type="password" name="current_password" required placeholder="Masukkan kata sandi saat ini"
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Current Password <span class="text-rose-500">*</span></label>
+                        <input type="password" name="current_password" required placeholder="Enter your current password"
                                class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all font-mono">
                     </div>
-                    
+
                     <div class="border-t border-slate-100 my-2 pt-3">
-                        <p class="text-[11px] text-slate-400 font-normal">*Kosongkan kolom di bawah jika tidak ingin mengubah kata sandi Anda.</p>
+                        <p class="text-[11px] text-slate-400 font-normal">Current Password.</p>
                     </div>
                     
                     <div>
-                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Kata Sandi Baru (Opsional)</label>
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">New Password (Optional)</label>
                         <input type="password" name="password" placeholder="Minimal 6 karakter"
                                class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all font-mono">
                     </div>
                     
                     <div>
-                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Konfirmasi Kata Sandi Baru</label>
-                        <input type="password" name="password_confirmation" placeholder="Ulangi kata sandi baru"
+                        <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2 tracking-[0.1em]">Confirm New Password</label>
+                        <input type="password" name="password_confirmation" placeholder="Enter your new password"
                                class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium transition-all font-mono">
                     </div>
                     
                     <div class="pt-2">
                         <button type="submit" class="w-full hero-gradient text-white font-bold py-4 rounded-2xl hover:scale-[1.01] transition-all duration-300 text-sm shadow-xl shadow-blue-500/20 cursor-pointer">
-                            Simpan Perubahan
+                            Save Changes
                         </button>
                     </div>
                 </form>

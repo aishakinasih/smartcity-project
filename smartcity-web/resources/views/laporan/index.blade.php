@@ -30,16 +30,16 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">Reporta </h1>
-                    <p class="text-slate-500 text-xs">Masuk sebagai: <span class="text-[#0F4C81] font-bold">{{ auth()->user()->name }}</span></p>
+                    <p class="text-slate-500 text-xs">Login as: <span class="text-[#0F4C81] font-bold">{{ auth()->user()->name }}</span></p>
                 </div>
             </div>
             
             <div class="flex items-center gap-2">
-                <a href="{{ route('profile.show') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02]">Profil</a>
-                <a href="{{ route('laporan.riwayat') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02]">Riwayat</a>
+                <a href="{{ route('profile.show') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02]">Profile</a>
+                <a href="{{ route('laporan.riwayat') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02]">History</a>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02]">Keluar</button>
+                    <button type="submit" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02]">Log Out</button>
                 </form>
             </div>
         </div>
@@ -89,22 +89,22 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Lokasi Kejadian</label>
-                    <input type="text" name="lokasi" required placeholder="Contoh: Jatinangor, Kab. Sumedang" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium">
+                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Incident Location</label>
+                    <input type="text" name="lokasi" required placeholder="Example: Jatinangor, Kab. Sumedang" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Isi Laporan Keluhan</label>
-                    <textarea name="isi_laporan" rows="4" required placeholder="Tuliskan keluhan lengkap di sini..." class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium resize-none"></textarea>
+                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Report Details</label>
+                    <textarea name="isi_laporan" rows="4" required placeholder="Write your report in detail here..." class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#0F4C81]/10 text-sm text-slate-800 font-medium resize-none"></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Foto Bukti Kejadian</label>
+                    <label class="block text-xs font-extrabold uppercase text-[#0F4C81] mb-2.5 tracking-[0.15em]">Upload Evidence Photo</label>
                     <input type="file" name="foto" accept="image/*" class="w-full p-2 bg-slate-50 border border-slate-100 rounded-2xl text-sm text-slate-500 file:bg-[#0F4C81] file:text-white file:border-0 file:px-4 file:py-2.5 file:rounded-xl file:cursor-pointer">
                 </div>
 
                 <button type="submit" class="w-full hero-gradient text-white font-bold py-4 rounded-2xl hover:scale-[1.01] transition-all duration-300 text-sm shadow-xl shadow-blue-500/20">
-                    Kirim Pengaduan 
+                    Send Report
                 </button>
             </form>
         </div>

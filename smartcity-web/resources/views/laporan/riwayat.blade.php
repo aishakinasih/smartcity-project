@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartReport - Riwayat Pengaduan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartReport - Report History </title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -30,17 +31,17 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">Riwayat Pengaduan Saya</h1>
-                    <p class="text-slate-500 text-xs">Selamat datang kembali, <span class="text-[#0F4C81] font-bold">{{ auth()->user()->name }}</span></p>
+                    <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">My Report History</h1>
+                    <p class="text-slate-500 text-xs">Welcome Back, <span class="text-[#0F4C81] font-bold">{{ auth()->user()->name }}</span></p>
                 </div>
             </div>
             
             <div class="flex items-center gap-2">
-                <a href="{{ route('laporan.index') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Buat Laporan Baru</a>
-                <a href="{{ route('profile.show') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Profil Saya</a>
+                <a href="{{ route('laporan.index') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">Create a New Report</a>
+                <a href="{{ route('profile.show') }}" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap">My Profile</a>
                 <form id="riwayat-logout-form" action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap cursor-pointer">Keluar</button>
+                    <button type="submit" class="h-10 px-6 hero-gradient text-white text-xs font-bold rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-blue-500/20 hover:scale-[1.02] whitespace-nowrap cursor-pointer">Log Out</button>
                 </form>
             </div>
         </div>
@@ -51,10 +52,10 @@
                 <table class="w-full text-left border-collapse min-w-[750px]">
                     <thead>
                         <tr class="bg-slate-50 text-[#0F4C81] text-xs font-extrabold uppercase border-b border-slate-100 tracking-[0.1em]">
-                            <th class="px-6 py-4 rounded-tl-2xl w-[35%]">Laporan Anda</th>
-                            <th class="px-6 py-4 w-[30%]">Tujuan Instansi</th>
-                            <th class="px-6 py-4 w-[15%]">Lokasi</th>
-                            <th class="px-6 py-4 text-center rounded-tr-2xl w-[20%]">Status Kelanjutan</th>
+                            <th class="px-6 py-4 rounded-tl-2xl w-[35%]">Your Reports</th>
+                            <th class="px-6 py-4 w-[30%]">Assigned Agency</th>
+                            <th class="px-6 py-4 w-[15%]">Locations</th>
+                            <th class="px-6 py-4 text-center rounded-tr-2xl w-[20%]">Progress Status</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100 text-sm text-slate-800 font-medium">
@@ -107,7 +108,7 @@
                         @empty
                         <tr>
                             <td colspan="4" class="px-6 py-16 text-center text-slate-400 italic font-medium">
-                                Anda belum pernah mengirimkan laporan pengaduan.
+                                You have not submitted any reports yet.
                             </td>
                         </tr>
                         @endforelse
