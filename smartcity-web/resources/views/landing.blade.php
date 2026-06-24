@@ -132,18 +132,24 @@
 
                         <div class="space-y-4">
                             <div class="flex justify-between items-center">
-                                <span class="font-semibold text-slate-700">🔴 Not Yet Processed</span>
-                                <span class="font-bold text-[#f43f5e]">{{ $totalSemua > 0 ? round(($totalMasuk / $totalSemua) * 100) : 0 }}%</span>
+                                <span class="font-semibold text-slate-700 flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-[#cbd5e1]"></span> Not Yet Processed
+                                </span>
+                                <span class="font-bold text-slate-600">{{ $totalSemua > 0 ? round(($totalMasuk / $totalSemua) * 100) : 0 }}%</span>
                             </div>
 
                             <div class="flex justify-between items-center">
-                                <span class="font-semibold text-slate-700">🔵 In Progress</span>
-                                <span class="font-bold text-[#38bdf8]">{{ $totalSemua > 0 ? round(($totalDiproses / $totalSemua) * 100) : 0 }}%</span>
+                                <span class="font-semibold text-slate-700 flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-[#60a5fa]"></span> In Progress
+                                </span>
+                                <span class="font-bold text-[#60a5fa]">{{ $totalSemua > 0 ? round(($totalDiproses / $totalSemua) * 100) : 0 }}%</span>
                             </div>
 
                             <div class="flex justify-between items-center">
-                                <span class="font-semibold text-slate-700">🟢 Resolved</span>
-                                <span class="font-bold text-[#34d399]">{{ $totalSemua > 0 ? round(($totalSelesai / $totalSemua) * 100) : 0 }}%</span>
+                                <span class="font-semibold text-slate-700 flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-[#0284c7]"></span> Resolved
+                                </span>
+                                <span class="font-bold text-[#0284c7]">{{ $totalSemua > 0 ? round(($totalSelesai / $totalSemua) * 100) : 0 }}%</span>
                             </div>
                         </div>
 
@@ -177,9 +183,7 @@ document.addEventListener("DOMContentLoaded", function(){
             labels: ['Belum Diproses', 'Diproses', 'Selesai'],
             datasets: [{
                 data: totalData > 0 ? [dataMasuk, dataDiproses, dataSelesai] : [1, 1, 1],
-                // Menggunakan Merah yang lebih "muted"/elegan, Biru, dan Hijau yang serasi
-                // Gunakan palet ini agar lebih "nyambung" dengan background biru kamu
-                backgroundColor: ['#f43f5e', '#38bdf8', '#34d399'],
+                backgroundColor: ['#cbd5e1', '#60a5fa', '#0284c7'],
                 borderWidth: 0,
                 hoverOffset: 4
             }]
@@ -188,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function(){
             plugins:{
                 legend:{display:false}
             },
-            cutout:'75%', // Dibuat sedikit lebih ramping agar lebih elegan
+            cutout:'75%', 
             animation: {
                 animateScale: true,
                 animateRotate: true
