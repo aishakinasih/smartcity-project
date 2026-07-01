@@ -2,9 +2,9 @@
 
 ## Team Members
 
-* Syaikha Habibtiana (240025)
-* Fitri Sahwalia (240031)
-* Aisha Kinasih (240047)
+* Syaikha Habibtiana (140810240025)
+* Fitri Sahwalia (140810240031)
+* Aisha Kinasih (140810240047)
 
 # Reporta: AI-Based Public Report Urgency Prioritization System
 
@@ -62,3 +62,100 @@ The system adopts a structured workflow consisting of:
 Website & GitHub: https://linktr.ee/ReportaAI
 
 Model: https://drive.google.com/drive/folders/1nyMKRV1oQBMF-HMPGKs8FDqHN5ytD_Dp?usp=drive_link
+
+## How to Use
+
+### 1. Public User (Citizen)
+
+1. Open the Reporta website.
+2. Register a new account.
+3. Log in using the registered account.
+4. Submit a public report by filling in:
+   - Government agency (Instansi)
+   - Report title
+   - Report description
+   - Location
+   - Supporting photo (optional)
+5. After submission, the report will be automatically analyzed by the AI model.
+6. Users can monitor the report status through the **Report History** page.
+
+### 2. Administrator (AI Result)
+
+The AI prediction results are displayed on the administrator dashboard after a report has been submitted.
+
+Two administrator roles are available:
+
+#### Super Administrator
+
+Has access to:
+- View all reports from every agency.
+- View AI urgency prediction (High / Medium / Low).
+- View AI confidence score.
+- Monitor report statistics.
+- Update report status.
+
+Login credentials:
+
+Email:
+```
+superadmin@smartcity.go.id
+```
+
+Password:
+```
+password123
+
+```
+
+#### Agency Administrator
+
+Agency Administrator accounts are available for each participating government agency.  
+Use the following login format:
+
+**Email**
+```
+admin1@smartcity.go.id
+admin2@smartcity.go.id
+...
+admin13@smartcity.go.id
+```
+
+**Password (all accounts)**
+```
+password123
+```
+
+The administrator accounts correspond to the following government agencies:
+
+| Email | Government Agency |
+|--------|-------------------|
+| admin1@smartcity.go.id | DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN |
+| admin2@smartcity.go.id | DINAS SOSIAL |
+| admin3@smartcity.go.id | DINAS PERHUBUNGAN |
+| admin4@smartcity.go.id | SEKRETARIAT DAERAH |
+| admin5@smartcity.go.id | SEKRETARIAT DPRD |
+| admin6@smartcity.go.id | DINAS PENDIDIKAN |
+| admin7@smartcity.go.id | SATUAN POLISI PAMONG PRAJA |
+| admin8@smartcity.go.id | DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL |
+| admin9@smartcity.go.id | DINAS KESEHATAN |
+| admin10@smartcity.go.id | BADAN PENANGGULANGAN BENCANA DAERAH (BPBD) |
+| admin11@smartcity.go.id | DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN |
+| admin12@smartcity.go.id | DINAS TENAGA KERJA DAN TRANSMIGRASI |
+| admin13@smartcity.go.id | DINAS LINGKUNGAN HIDUP DAN KEHUTANAN |
+
+## AI Workflow
+
+1. Citizen submits a report.
+2. Laravel sends the report text to the AI API.
+3. The IndoBERT model predicts the urgency level.
+4. The prediction result and confidence score are stored in the database.
+5. Administrators can immediately view the prediction on the dashboard and prioritize urgent reports.
+
+---
+
+## Notes
+
+- New users should create their own account through the registration page.
+- AI prediction is generated automatically after a report is submitted.
+- The urgency prediction and confidence score are visible only to administrators.
+- Final decision-making remains under the responsibility of the authorized government officer.
